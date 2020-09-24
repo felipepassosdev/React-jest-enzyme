@@ -1,4 +1,4 @@
-My Article code example on "Practical Guide to testing React Applications with Jest"
+ Project react with jest and enzyme
 
 Clone this repo
 
