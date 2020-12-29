@@ -27,10 +27,11 @@ class App extends Component {
   render() {
     const { isLoading, users, error } = this.state;
     return (
-      <React.Fragment>
+      <>
         <h1>title</h1>
         <p>First paragraph</p>
         <h2>Welcome to React Testing</h2>;
+        <button type="button" id="my-button-two"></button>
         <button type="button" id="my-button-three"></button>
         {error ? <p>{error.message}</p> : null}
         {!isLoading ? (
@@ -40,7 +41,7 @@ class App extends Component {
         ) : (
           <h3>Fetching Users...</h3>
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

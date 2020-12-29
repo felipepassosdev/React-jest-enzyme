@@ -27,6 +27,13 @@ it("renders paragraph", () => {
   expect(wrapper.contains(header)).toEqual(true);
 }); 
 
+it("render h2", () => {
+  const wrapper = shallow(<App/>);
+  const h2 = <h2>Welcome to React Testing</h2>;
+  console.log(wrapper.contains(h2));
+  expect(wrapper.contains(h2)).toEqual(true)
+})
+
 it("renders h3", () => {
   const app = shallow(<App/>);
   const title = <h3>Fetching Users...</h3>;
@@ -42,6 +49,11 @@ it ("renders h3", () => {
 it ("render button", () => {
   const wrapper = shallow(<App/>);
   wrapper.find('button#my-button-three').simulate("click")
+})
+
+it ("render button2", () => {
+  const wrapper = shallow(<App/>);
+  wrapper.find('button#my-button-two').simulate("click")
 })
 
 const user = {
