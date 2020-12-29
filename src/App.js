@@ -1,31 +1,30 @@
-import React, { Component } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Account from "./Account";
 
-class App extends Component {
-  state = {
-    isLoading: true,
-    users: [],
-    error: null,
-  };
+const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [users, setUsers] = useState([]);
+  const [error, setError] = useState(null);
 
-  fetchUsers() {
-    fetch(`https://jsonplaceholder.typicode.com/users`)
-      .then((response) => response.json())
-      .then((data) => {
-        this.setState({
-          users: data,
-          isLoading: false,
-        })
+  const fetchUsers = () =>{
+
+    axios.get(`https://jsonplaceholder.typicode.com/users`)
+      .then(function (response) {
+        console.log(response.data)
+          setUsers(response.data)
+          setIsLoading(false)
       })
-      .catch((error) => this.setState({ error, isLoading: false }));
+      .catch((error) => {
+        setError(error)
+        setIsLoading(false)
+      })
   }
 
-  componentDidMount() {
-    this.fetchUsers();
-  }
+  useEffect(() => {
+    fetchUsers()
+  }, [])
 
-  render() {
-    const { isLoading, users, error } = this.state;
     return (
       <>
         <h1>title</h1>
@@ -43,7 +42,6 @@ class App extends Component {
         )}
       </>
     );
-  }
 }
 
 export default App;
